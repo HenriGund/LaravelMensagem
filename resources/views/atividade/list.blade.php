@@ -1,5 +1,7 @@
 <h1>Lista de Atividades</h1>
 <hr>
+<a href="/atividades/create">Nova Atividade</a>
+<hr>
 <!-- EXIBE MENSAGENS DE ERROS -->
 @if ($errors->any())
 <div class="container">
