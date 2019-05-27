@@ -1,6 +1,6 @@
 <h1>Lista de Mensagens<h1>
 <hr>
-<a href="/mensagem/create">Nova Mensagem</a>
+@if (Auth::check())<a href="/mensagem/create">Nova Mensagem</a>@endif
 <hr>
 @if ($errors->any())
 <div class="container">
