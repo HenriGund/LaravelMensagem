@@ -17,8 +17,14 @@ class AddMensagemTable extends Migration
             $table->increments('id');
             $table->string('titulo');
             $table->string('autor');
-            $table->string('mensagem');
+            $table->string('mensagem');            
+            $table->integer('user_id')->unsigned();
+            $table->integer('atividade_id')->unsigned();
             $table->timestamps();
+        });
+        Schema::table('mensagem', function($table){
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('atividade_id')->references('id')->on('atividades');
         });
     }
 
