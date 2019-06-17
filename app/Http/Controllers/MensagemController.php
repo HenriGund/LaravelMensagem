@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Mensagem;
+use App\Atividade;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -25,8 +27,10 @@ class MensagemController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('mensagem.create');
+    {      
+        $listaAtividades = Atividade::all();
+        return view('mensagem.create', ['atividades' => $listaAtividades]);
+        
     }
 
     /**
@@ -61,6 +65,8 @@ class MensagemController extends Controller
         $obj_Mensagem->titulo =       $request['titulo'];
         $obj_Mensagem->autor = $request['autor'];
         $obj_Mensagem->mensagem = $request['mensagem'];
+        $obj_Mensagem->user_id = Auth::id();
+        $obj_Mensagem->atividade_id = $request['atividade_id'];
         $obj_Mensagem->save();
         return redirect('/mensagem')->with('success', 'Mensagem criada com sucesso!!');
 

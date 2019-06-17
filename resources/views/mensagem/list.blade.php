@@ -1,4 +1,4 @@
-<h1>Lista de Mensagens<h1>
+<h1>Lista de Mensagens</h1>
 <hr>
 @if (Auth::check())<a href="/mensagem/create">Nova Mensagem</a>@endif
 <hr>
