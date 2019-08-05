@@ -7,6 +7,7 @@ use App\Atividade;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Torann\GeoIP\Facades\GeoIP;
 
 class MensagemController extends Controller
 {
@@ -17,8 +18,8 @@ class MensagemController extends Controller
      */
     public function index()
     {
-        $listaMensagem = Mensagem::all();
-        return view('mensagem.list',['mensagem' => $listaMensagem]);
+       $listaMensagem = mensagem::paginate(3);
+       return view('mensagem.list',['mensagem' => $listaMensagem]);
     }
 
     /**
@@ -165,6 +166,14 @@ class MensagemController extends Controller
         $obj_Mensagem->delete($id);
         return redirect('/mensagem')->with('sucess', 'Mensagem excluída com sucesso!');
     }
+
+   public function consulta($ip){
+        //dd( \Request::getClientIp() );
+        $locationobject = GeoIP::getLocation($ip);
+        dd($locationobject);
+    }
+
+    
 
 
 }

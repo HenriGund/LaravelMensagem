@@ -22,6 +22,8 @@
     <br>
 @endforeach
 
+{{ $mensagem->links() }}
+
 @if(\Session::has('sucess'))
 	<div class="container">
 		<div class="alert alert-sucess">
