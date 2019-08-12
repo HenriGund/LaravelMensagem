@@ -51,4 +51,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
+
+Route::get('/ip', 'ipController@ip');
+Route::post('/ip', 'ipController@ipConsulta');
 Route::get('/ip/{ip}', 'MensagemController@consulta');
+
+
