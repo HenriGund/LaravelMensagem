@@ -68,9 +68,7 @@ class ipController extends Controller
                           ])
                   ->get();
 
-
-        dd($mapa);
         
-        return view('ip.ipresultado', ['consulta' => $locationobject, 'mapa' => $mapa]);
+        return view('ip.ipresultado', ['consulta' => $locationobject]);
     }
 }
